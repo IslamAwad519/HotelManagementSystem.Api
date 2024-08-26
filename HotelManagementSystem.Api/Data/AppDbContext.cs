@@ -15,7 +15,7 @@ public class AppDbContext :DbContext
     public DbSet<RoomFacility> RoomFacilities { get; set; }
     public DbSet<Facility> Facilities { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
-    public DbSet<ReservationFacility> ReservationFacilities { get; set; }
+    public DbSet<ReservationRoomFacility> ReservationRoomFacilities { get; set; }
     public DbSet<ReservationRoom> ReservationRooms { get; set; }
     public DbSet<FeedBack> FeedBacks { get; set; }
     public DbSet<Offer> Offers { get; set; }

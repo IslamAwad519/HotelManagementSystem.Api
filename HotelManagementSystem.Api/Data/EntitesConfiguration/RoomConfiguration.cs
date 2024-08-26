@@ -10,6 +10,7 @@ public class RoomConfiguration :IEntityTypeConfiguration<Room>
     {
         builder.HasIndex(e => e.RoomNumber).IsUnique();
         builder.Property(e => e.RoomNumber).HasMaxLength(10);
-       // builder.HasQueryFilter(e => !e.Deleted);
+        builder.Property(e => e.Price).IsRequired().HasPrecision(18, 2);
+        // builder.HasQueryFilter(e => !e.Deleted);
     }
 }

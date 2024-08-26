@@ -9,4 +9,6 @@ public class RoomFacility :BaseModel
 
     public Room Room { get; set; }
     public Facility Facility { get; set; }
+
+    public ICollection<ReservationRoomFacility> Reservations { get; set; }
 }

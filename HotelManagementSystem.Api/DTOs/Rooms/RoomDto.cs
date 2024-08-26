@@ -6,6 +6,7 @@ namespace HotelManagementSystem.Api.DTOs.Rooms;
 
 public class RoomDto
 {
+    public int Id { get; set; }
     public int RoomNumber { get; set; }
     public int Floor { get; set; }
     public Occupancy Occupancy { get; set; }

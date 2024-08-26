@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelManagementSystem.Api.Data.EntitesConfiguration;
 
-public class ReservationFacilityConfiguration : IEntityTypeConfiguration<ReservationFacility>
+public class ReservationFacilityConfiguration : IEntityTypeConfiguration<ReservationRoomFacility>
 {
-    public void Configure(EntityTypeBuilder<ReservationFacility> builder)
+    public void Configure(EntityTypeBuilder<ReservationRoomFacility> builder)
     {
-        builder.HasIndex(e => new { e.ReservationId, e.FacilityId }).IsUnique();
+        builder.HasIndex(e => new { e.ReservationId,e.RoomId, e.FacilityId}).IsUnique();
     }
 }

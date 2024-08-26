@@ -53,20 +53,30 @@ public class RoomService : IRoomService
         return _mapper.Map<RoomDto>(room);
     }
 
-    public async Task<RoomDto> AddRoom(CreateUpdateRoomDto createRoomDto, List<IFormFile> images)
+    public async Task<RoomDto?> AddRoom(CreateUpdateRoomDto createRoomDto, List<IFormFile> images)
     {
-        var room = _mapper.Map<Room>(createRoomDto);
-        //Begin Trans
-        await _roomRepository.BeginTransactionAsync();
+        try
+        {
+            var room = _mapper.Map<Room>(createRoomDto);
+            //Begin Trans
+            await _roomRepository.BeginTransactionAsync();
 
-        await _roomRepository.AddAsync(room);
-        await UploadRoomImages(room.Id,images);
-        await AddRoomFacilitiesAsync(room.Id, createRoomDto.Facilities);
-        
-        //End Trans
-        await _roomRepository.CommitTransactionAsync();
+            await _roomRepository.AddAsync(room);
+            await UploadRoomImages(room.Id, images);
+            await AddRoomFacilitiesAsync(room.Id, createRoomDto.Facilities);
 
-        return _mapper.Map<RoomDto>(room);
+            //End Trans
+            await _roomRepository.CommitTransactionAsync();
+            return _mapper.Map<RoomDto>(room);
+        }
+        catch (Exception e)
+        {
+            await _roomRepository.RollbackTransactionAsync();
+
+            throw;
+        }
+
+        return null;
     }
 
     public async Task<RoomDto> UpdateRoom(int roomId, CreateUpdateRoomDto createUpdateRoomDto)

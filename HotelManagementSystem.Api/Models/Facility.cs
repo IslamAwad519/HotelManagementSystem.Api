@@ -8,5 +8,5 @@ public class Facility :BaseModel
     public decimal Price { get; set; }
 
     public ICollection<RoomFacility>? Rooms { get; set; }
-    public ICollection<ReservationFacility> Reservations { get; set; }
+    ///public ICollection<ReservationFacility> Reservations { get; set; }
 }

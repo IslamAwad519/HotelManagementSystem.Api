@@ -9,6 +9,8 @@ public class Room: BaseModel
     public int Floor { get; set; }
     public Occupancy Occupancy { get; set; }
     public bool Status { get; set; } // حالة الغرةفة هل هي صالحة ولا تحت الصيانة
+    public decimal Price { get; set; }
+
     public int RoomTypeId { get; set; }
 
     public RoomType RoomType { get; set; }

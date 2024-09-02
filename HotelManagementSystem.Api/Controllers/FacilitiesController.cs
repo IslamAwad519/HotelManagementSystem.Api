@@ -1,7 +1,7 @@
 ﻿using HotelManagementSystem.Api.DTOs.Facilities;
 using HotelManagementSystem.Api.Services.Facilities;
-using HotelManagementSystem.Api.Services.Offers;
 using HotelManagementSystem.Api.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelManagementSystem.Api.Controllers;
@@ -100,6 +100,7 @@ public class FacilitiesController : ControllerBase
         };
     }
 
+    
     [HttpDelete("{id}")]
     public async Task<ResultViewModel<FacilityDto>> DeleteFacility(int id)
     {
